@@ -1,14 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-describe('AppComponent', () => {
+import { HeroesComponent } from './heroes/heroes.component';
+fdescribe('AppComponent', () => {
  let fixture = null;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent, HeroesComponent
       ],
+      imports: [HeroesComponent],
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
+
   }));
   it('should create the app', async(() => {
 
@@ -20,7 +23,7 @@ describe('AppComponent', () => {
 
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Tour of Heroes!');
+    expect(compiled.querySelector('h1').textContent).toContain('Tour of Heroes');
   }));
   it('should have title "Tour of Heroes"', async(()=> {
     const app = fixture.debugElement.componentInstance;
