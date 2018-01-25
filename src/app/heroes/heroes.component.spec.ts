@@ -22,4 +22,8 @@ describe('HeroesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call Hero Constructor', () => {
+      expect(component.hero.id).toEqual(1);
+    });
 });

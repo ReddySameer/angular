@@ -1,14 +1,15 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
  let fixture = null;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, HeroesComponent
+        AppComponent,
+        HeroesComponent
       ],
-      imports: [HeroesComponent],
+      imports: [],
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
 
