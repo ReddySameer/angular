@@ -13,4 +13,12 @@ export class HeroesPage {
   getHeroesNameInputField() {
     return element(by.css('app-root .hero-name-input'));
   }
+
+  getHerosListItem(id) {
+    return element.all(by.css('.heroes-list'))
+  }
+
+  getAllFromHeroList() {
+    return element.all(by.css('.heroes-list'));
+  }
 }

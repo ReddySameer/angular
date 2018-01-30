@@ -10,26 +10,38 @@ fdescribe('heroes component tests', () => {
     page = new AppPage();
     heroesPage = new HeroesPage();
   });
-  it('should display heroes object', () => {
+  xit('should display heroes object', () => {
     page.navigateTo();
     expect(heroesPage.getHeroesH2Text()).toEqual('WINDSTORM Details');
   });
 
-  it('should display heroes id', () => {
+  xit('should display heroes id', () => {
     page.navigateTo();
     expect(heroesPage.getHeroesIdText()).toEqual('Id:');
   });
 
-  it('should display input field', () => {
+  xit('should display input field', () => {
     page.navigateTo();
     expect(heroesPage.getHeroesNameInputField().isPresent()).toBeTruthy()
   });
 
-  it('should test for two way binding', () => {
+  xit('should test for two way binding', () => {
     page.navigateTo();
     expect(heroesPage.getHeroesNameInputField().getAttribute('value')).toEqual('Windstorm');
     heroesPage.getHeroesNameInputField().clear();
     heroesPage.getHeroesNameInputField().sendKeys("Windstorm Changed");
     expect(heroesPage.getHeroesNameInputField().getAttribute('value')).toEqual('Windstorm Changed');
   });
+
+  it('has list of items', () => {
+    page.navigateTo();
+    console.log(heroesPage.getAllFromHeroList());
+    expect(heroesPage.getAllFromHeroList().count()).toEqual(10);
+  });
+  it('should test for list item', () => {
+    page.navigateTo();
+    console.log(heroesPage.getAllFromHeroList());
+
+    expect(heroesPage.getHerosListItem(3).getAttribute('value')).toEqual('Bombasto');
+  })
 });
