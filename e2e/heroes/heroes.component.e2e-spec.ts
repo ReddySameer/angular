@@ -2,7 +2,7 @@ import { AppPage } from '../app.po';
 import { HeroesPage } from './heroes.component.po';
 import { protractor } from 'protractor';
 
-fdescribe('heroes component tests', () => {
+describe('heroes component tests', () => {
   let page: AppPage,
     heroesPage: HeroesPage;
 
@@ -35,13 +35,13 @@ fdescribe('heroes component tests', () => {
 
   it('has list of items', () => {
     page.navigateTo();
-    console.log(heroesPage.getAllFromHeroList());
+
     expect(heroesPage.getAllFromHeroList().count()).toEqual(10);
   });
+
   it('should test for list item', () => {
     page.navigateTo();
-    console.log(heroesPage.getAllFromHeroList());
+    expect(heroesPage.getHeroNameFromList(3).getText()).toEqual([ 'Bombasto' ]);
+  });
 
-    expect(heroesPage.getHerosListItem(3).getAttribute('value')).toEqual('Bombasto');
-  })
 });

@@ -15,10 +15,16 @@ export class HeroesPage {
   }
 
   getHerosListItem(id) {
-    return element.all(by.css('.heroes-list'))
+    return element.all(by.css(`.heroes li:nth-child(${id})`))
+  }
+
+  getHeroNameFromList(id) {
+    return element.all(by.css(`.heroes li:nth-child(${id}) span.hero-name`));
   }
 
   getAllFromHeroList() {
     return element.all(by.css('.heroes-list'));
   }
+
+
 }
