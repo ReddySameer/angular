@@ -24,6 +24,6 @@ describe('HeroesComponent', () => {
   });
 
   it('should call Hero Constructor', () => {
-      expect(component.hero.id).toEqual(1);
+      expect(component.selectedHero.id).toEqual(1);
     });
 });
