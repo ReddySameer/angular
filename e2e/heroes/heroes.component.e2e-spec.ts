@@ -2,7 +2,7 @@ import { AppPage } from '../app.po';
 import { HeroesPage } from './heroes.component.po';
 import { protractor } from 'protractor';
 
-describe('heroes component tests', () => {
+fdescribe('heroes component tests', () => {
   let page: AppPage,
     heroesPage: HeroesPage;
 
@@ -41,6 +41,7 @@ describe('heroes component tests', () => {
 
   it('should test for list item', () => {
     page.navigateTo();
+    page.
     expect(heroesPage.getHeroNameFromList(3).getText()).toEqual([ 'Bombasto' ]);
   });
 

@@ -3,7 +3,7 @@ import { AppPage } from '../app.po';
 import { HeroDetailPage } from '../hero-detail/hero-detail.component.po';
 import { HeroesPage } from './heroes.component.po';
 import { Hero } from '../../src/app/data/hero';
-fdescribe('hero-detail component tests', () => {
+describe('hero-detail component tests', () => {
   let page: AppPage,
     heroesDetailPage: HeroDetailPage,
     heroesPage: HeroesPage;
