@@ -1,14 +1,18 @@
 import { AppPage } from '../app.po';
 import { HeroesPage } from './heroes.component.po';
-import { protractor } from 'protractor';
+import { browser, protractor } from 'protractor';
+import { DashboardPage } from '../dashboard/dashboard.component.po';
 
-fdescribe('heroes component tests', () => {
+describe('heroes component tests', () => {
   let page: AppPage,
-    heroesPage: HeroesPage;
+    heroesPage: HeroesPage,
+      dashboardPage: DashboardPage;
+
 
   beforeEach(() => {
     page = new AppPage();
     heroesPage = new HeroesPage();
+    dashboardPage = new DashboardPage();
   });
   xit('should display heroes object', () => {
     page.navigateTo();
@@ -35,13 +39,14 @@ fdescribe('heroes component tests', () => {
 
   it('has list of items', () => {
     page.navigateTo();
-
+    dashboardPage.getHeroesDashboardLink().click();
     expect(heroesPage.getAllFromHeroList().count()).toEqual(10);
   });
 
   it('should test for list item', () => {
     page.navigateTo();
-    page.
+    //browser.navigateTo("/")
+    dashboardPage.getHeroesDashboardLink().click();
     expect(heroesPage.getHeroNameFromList(3).getText()).toEqual([ 'Bombasto' ]);
   });
 
