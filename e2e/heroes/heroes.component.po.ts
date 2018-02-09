@@ -26,5 +26,9 @@ export class HeroesPage {
     return element.all(by.css('.heroes-list'));
   }
 
+  getAnchorHeroDetailElement(id) {
+    return element.all(by.css(`.hero-detail-${id}`))
+  }
+
 
 }

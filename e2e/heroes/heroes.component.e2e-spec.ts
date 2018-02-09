@@ -43,11 +43,34 @@ describe('heroes component tests', () => {
     expect(heroesPage.getAllFromHeroList().count()).toEqual(10);
   });
 
-  it('should test for list item', () => {
+  xit('should test for list item', () => {
     page.navigateTo();
     //browser.navigateTo("/")
     dashboardPage.getHeroesDashboardLink().click();
     expect(heroesPage.getHeroNameFromList(3).getText()).toEqual([ 'Bombasto' ]);
+  });
+
+  fit('should go to hero-detail when anchor is clicked', () => {
+    page.navigateTo();
+    dashboardPage.getHeroesDashboardLink().click();
+    var oldUrl = browser.getCurrentUrl().then(function(url){
+      console.log('oldUrl:', url);
+      return url;
+    });
+    var ec = protractor.ExpectedConditions;
+    var anchorLink = heroesPage.getAnchorHeroDetailElement(12);
+    anchorLink.click().then( function() {
+      browser.wait( function() {
+        return browser.getCurrentUrl().then(function(url){
+            /*if(url ==! oldUrl) {
+              return true;
+            }*/
+
+            console.log('newUrl:', url);
+        });
+      }, 1000, 'url has not changed');
+    });
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:49154/detail/12')
   });
 
 });
