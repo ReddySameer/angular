@@ -50,7 +50,7 @@ describe('heroes component tests', () => {
     expect(heroesPage.getHeroNameFromList(3).getText()).toEqual([ 'Bombasto' ]);
   });
 
-  fit('should go to hero-detail when anchor is clicked', () => {
+  it('should go to hero-detail when anchor is clicked', () => {
     page.navigateTo();
     dashboardPage.getHeroesDashboardLink().click();
     var oldUrl = browser.getCurrentUrl().then(function(url){

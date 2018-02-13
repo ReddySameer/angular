@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroDetailComponent } from './hero-detail.component';
+import { HeroService } from '../hero-service/hero.service';
+import { MessageService } from '../messages/message.service';
 
 describe('HeroDetailComponent', () => {
   let component: HeroDetailComponent;
@@ -8,7 +10,8 @@ describe('HeroDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeroDetailComponent ]
+      declarations: [ HeroDetailComponent ],
+      providers: [HeroService, MessageService]
     })
     .compileComponents();
   }));
@@ -21,6 +24,11 @@ describe('HeroDetailComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should fetch hero for the given hero id in the the path', () => {
+
+    //(component.getHero()).not.toBeNull();
   });
 
 
