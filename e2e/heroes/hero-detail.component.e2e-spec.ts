@@ -5,17 +5,33 @@ import { HeroesPage } from './heroes.component.po';
 import { Hero } from '../../src/app/data/hero';
 import { DashboardPage } from '../dashboard/dashboard.component.po';
 import { browser, protractor } from 'protractor';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HeroService } from '../../src/app/hero-service/hero.service';
+import { MessageService } from '../../src/app/messages/message.service';
 describe('hero-detail component tests', () => {
   let page: AppPage,
     heroesDetailPage: HeroDetailPage,
     heroesPage: HeroesPage,
     dashboardPage: DashboardPage;
 
+  let component: HeroDetailComponent;
+  let fixture: ComponentFixture <HeroDetailComponent>;
+
   beforeEach(() => {
     page = new AppPage();
     heroesDetailPage = new HeroDetailPage();
     heroesPage = new HeroesPage();
     dashboardPage= new DashboardPage();
+
+    TestBed.configureTestingModule({
+      declarations: [ HeroDetailComponent ],
+      providers: [HeroService, MessageService]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(HeroDetailComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
   });
 
   xit('should display selected-hero name in uppercase', () => {
@@ -59,10 +75,15 @@ describe('hero-detail component tests', () => {
         });
       }, 1000, 'url has not changed');
 
-      expect(heroesDetailPage.getHero()).not.toBeNull();
+      expect(component.getHero()).not.toBeNull();
       //expect(heroesDetailPage.getHero())
 
     });
   });
+
+  fit('should goback to the page it came from',  () =>  {
+      page.navigateTo();
+      expect(component.goBack()).toBeTruthy();
+  })
 
 });
