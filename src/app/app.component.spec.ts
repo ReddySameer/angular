@@ -1,15 +1,20 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './messages/message.service';
 describe('AppComponent', () => {
  let fixture = null;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        HeroesComponent
+        HeroesComponent,
+        MessagesComponent
       ],
-      imports: [],
+      imports: [RouterTestingModule],
+      providers: [MessageService]
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
 

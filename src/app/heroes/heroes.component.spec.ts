@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroesComponent } from './heroes.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HeroService } from '../hero-service/hero.service';
+import { MessageService } from '../messages/message.service';
+import { HEROES } from '../mock-heroes';
 
 describe('HeroesComponent', () => {
   let component: HeroesComponent;
@@ -8,7 +12,9 @@ describe('HeroesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeroesComponent ]
+      declarations: [ HeroesComponent ],
+      imports: [RouterTestingModule],
+      providers: [HeroService, MessageService]
     })
     .compileComponents();
   }));
@@ -24,6 +30,8 @@ describe('HeroesComponent', () => {
   });
 
   it('should call Hero Constructor', () => {
-      expect(component.selectedHero.id).toEqual(1);
+
+      component.onSelect(HEROES[0]);
+      expect(component.selectedHero.id).toEqual(11);
     });
 });
