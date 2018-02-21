@@ -13,4 +13,9 @@
 
 </li>
 </ul>
-
+<div>
+  <label> Hero Name: <Input #heroName></label>
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>

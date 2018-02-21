@@ -4,7 +4,7 @@ import { Hero } from '../data/hero';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { MessageService } from '../messages/message.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
 
@@ -35,6 +35,23 @@ export class HeroService {
       tap( data => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
+  }
+
+  updateHero(hero: Hero): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError(<any>('updateHero')))
+    );
+  }
+
+  addHero(hero: Hero): Observable<Hero> {
+    const httpOptions = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.post(this.heroesUrl, hero, httpOptions ).pipe(
+      tap((hero:Hero) => this.log(`added hero w/ id=${hero.id}`)),
+      catchError(this.handleError<Hero>('add Hero'))
+    );
+
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
